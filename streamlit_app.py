@@ -67,9 +67,9 @@ with st.sidebar :
     scol1, scol2 = st.columns([1.5,3])
     
 
-    #scol2.image("https://github.com/Nassuka/repo/blob/main/drap_fr.png",width = 30)
+    scol2.image("drap_fr.png",width = 30)
     scol2.write("")
-    #scol2.image("/Users/nass/Documents/Streamlit-app/drap_en.webp",width = 30)
+    scol2.image("drap_en.webp",width = 30)
     
 
     
