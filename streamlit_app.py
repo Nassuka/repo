@@ -50,7 +50,7 @@ def space_in_numbers(x):
     return n
 
 #Icône et nom de l'onglet
-st.set_page_config(page_title='Comparaison HFO vs GPL', initial_sidebar_state="expanded", layout = "wide")
+st.set_page_config(page_title='Comparaison HFO vs GPL', page_icon = "/Logo_TotalEnergies.png", initial_sidebar_state="expanded", layout = "wide")
 
 #Titre de l'application
 st.header('Application de comparaison des coûts de fonctionnement entre le HFO et le GPL')
