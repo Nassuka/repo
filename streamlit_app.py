@@ -13,7 +13,7 @@ from PIL import Image
 #from fonctions import calcul_conso_gpl, calcul_energy_hfo, price_hfo, price_gpl, euro_to_dollar, dollar_to_CFA, dollar_to_ZAR, dollar_to_din_tun, dollar_to_mur, space_in_numbers
 #from gen_pdf import gen_pdf
 
-img = Image.open('Logo_TotalEnergies.png')
+#img = Image.open('Logo_TotalEnergies.png')
 def calcul_energy_hfo(conso):
     return conso*11774
 
@@ -53,7 +53,7 @@ def space_in_numbers(x):
     return n
 
 #Icône et nom de l'onglet
-st.set_page_config(page_title='Comparaison HFO vs GPL', page_icon = img, initial_sidebar_state="expanded", layout = "wide")
+st.set_page_config(page_title='Comparaison HFO vs GPL', page_icon = 'Logo_TotalEnergies.png', initial_sidebar_state="expanded", layout = "wide")
 
 #Titre de l'application
 st.header('Application de comparaison des coûts de fonctionnement entre le HFO et le GPL')
