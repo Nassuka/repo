@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 from fonctions import calcul_conso_gpl, calcul_energy_hfo, price_hfo, price_gpl, euro_to_dollar, dollar_to_CFA, dollar_to_ZAR, dollar_to_din_tun, dollar_to_mur, space_in_numbers
-from gen_pdf import gen_pdf
+#from gen_pdf import gen_pdf
 
 #Icône et nom de l'onglet
 st.set_page_config(page_title='Comparaison HFO vs GPL',page_icon='/Users/nass/Documents/Streamlit-app/Logo_TotalEnergies.png', initial_sidebar_state="expanded", layout = "wide")
@@ -129,13 +129,13 @@ if fr :
             
            
         st.write(st.session_state)
-        val = st.button("Générer la facture", on_click=gen_pdf())
-        if val == True : 
+        #val = st.button("Générer la facture", on_click=gen_pdf())
+        #if val == True : 
             #gen_pdf()
-            with open("/Users/nass/Documents/Streamlit-app/pdf_generated.pdf","rb") as file : 
+           # with open("/Users/nass/Documents/Streamlit-app/pdf_generated.pdf","rb") as file : 
                 
                 #data = "/Users/nass/Documents/Streamlit-app/generated_pdf.pdf"
-                st.download_button("Télécharger la facture", data  = file, file_name='facture.pdf', mime = 'document/pdf')
+                #st.download_button("Télécharger la facture", data  = file, file_name='facture.pdf', mime = 'document/pdf')
     
     
     if choose == "HFO" : 
@@ -199,12 +199,12 @@ if fr :
         
 #English language
 if en :       
-    val = st.button("Generate the invoive", on_click = gen_pdf())
-    if val == True : 
-        with open("/Users/nass/Documents/Streamlit-app/pdf_generated.pdf","rb") as file : 
+    #val = st.button("Generate the invoive", on_click = gen_pdf())
+    #if val == True : 
+      #  with open("/Users/nass/Documents/Streamlit-app/pdf_generated.pdf","rb") as file : 
             
             #data = "/Users/nass/Documents/Streamlit-app/generated_pdf.pdf"
-            st.download_button("Download the invoice", data  = file, file_name='facture.pdf', mime = 'document/pdf')
+           # st.download_button("Download the invoice", data  = file, file_name='facture.pdf', mime = 'document/pdf')
     
     
     if choose == "HFO" : 
