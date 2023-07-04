@@ -50,7 +50,8 @@ def space_in_numbers(x):
         else :
             n = x[-i] + n
     
-    return n"""
+    return n
+    """
 
 #Icône et nom de l'onglet
 st.set_page_config(page_title='Comparaison HFO vs GPL', page_icon = 'Logo_TotalEnergies.png', initial_sidebar_state="expanded", layout = "wide")
