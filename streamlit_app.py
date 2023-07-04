@@ -37,8 +37,8 @@ with st.sidebar :
     
 
     
-    if 'en' not in st.session_state : 
-        st.session_state.en = False
+   # if 'en' not in st.session_state : 
+      #  st.session_state.en = False
 
     if 'fr' not in st.session_state : 
         st.session_state.fr = True
