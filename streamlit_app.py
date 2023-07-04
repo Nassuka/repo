@@ -24,6 +24,18 @@ st.header('Application de comparaison des coûts de fonctionnement entre le HFO 
 
 
 
+    
+if 'en' not in st.session_state : 
+   st.session_state.en = False
+
+if 'fr' not in st.session_state : 
+    st.session_state.fr = True
+    
+if 'money' not in st.session_state : 
+    st.session_state['money'] = ' $'
+    
+if 'conso' not in st.session_state :
+    st.session_state['conso'] = 0
 
 #Sidebar
 with st.sidebar : 
@@ -34,20 +46,7 @@ with st.sidebar :
     scol2.image("drap_fr.png",width = 30)
     scol2.write("")
     scol2.image("drap_en.webp",width = 30)
-    
 
-    
-   # if 'en' not in st.session_state : 
-      #  st.session_state.en = False
-
-    if 'fr' not in st.session_state : 
-        st.session_state.fr = True
-        
-    if 'money' not in st.session_state : 
-        st.session_state['money'] = ' $'
-        
-    if 'conso' not in st.session_state :
-        st.session_state['conso'] = 0
         
     def change_fr_to_en() : 
         if st.session_state.fr : 
