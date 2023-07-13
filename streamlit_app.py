@@ -6,9 +6,9 @@ import pandas as pd
 #from fonctions import calcul_conso_gpl,rendement, calcul_energy_hfo, price_hfo, price_gpl, euro_to_dollar, dollar_to_CFA, dollar_to_ZAR, dollar_to_din_tun, dollar_to_mur, space_in_numbers, courbe
 #from gen_pdf import gen_pdf
 #from bokeh.plotting import figure
-import jinja2
-import pdfkit
-from datetime import datetime
+#import jinja2
+#import pdfkit
+#from datetime import datetime
 
 #Icône et nom de l'onglet
 st.set_page_config(page_title='Comparaison HFO vs GPL',page_icon='/Users/nass/Documents/Streamlit-app/Logo_TotalEnergies.png', initial_sidebar_state="expanded", layout = "wide")
