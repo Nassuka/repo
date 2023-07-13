@@ -3,9 +3,12 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
-from fonctions import calcul_conso_gpl,rendement, calcul_energy_hfo, price_hfo, price_gpl, euro_to_dollar, dollar_to_CFA, dollar_to_ZAR, dollar_to_din_tun, dollar_to_mur, space_in_numbers, courbe
-from gen_pdf import gen_pdf
+#from fonctions import calcul_conso_gpl,rendement, calcul_energy_hfo, price_hfo, price_gpl, euro_to_dollar, dollar_to_CFA, dollar_to_ZAR, dollar_to_din_tun, dollar_to_mur, space_in_numbers, courbe
+#from gen_pdf import gen_pdf
 from bokeh.plotting import figure
+import jinja2
+import pdfkit
+from datetime import datetime
 
 #Icône et nom de l'onglet
 st.set_page_config(page_title='Comparaison HFO vs GPL',page_icon='/Users/nass/Documents/Streamlit-app/Logo_TotalEnergies.png', initial_sidebar_state="expanded", layout = "wide")
@@ -14,6 +17,95 @@ st.set_page_config(page_title='Comparaison HFO vs GPL',page_icon='/Users/nass/Do
 st.header('Application de comparaison des coûts de fonctionnement entre le HFO et le GPL')
 
 
+def calcul_energy_hfo(conso):
+    return conso*11774
+
+def calcul_conso_gpl(energy):
+    return energy/13800
+
+def price_hfo(conso):
+    return conso*408.9
+
+def price_gpl(conso) : 
+    return conso*602
+
+def euro_to_dollar(eur):
+    return eur * 1.09
+
+def dollar_to_CFA(dollar):
+    return dollar * 600.72
+
+def dollar_to_ZAR(dollar): 
+    return dollar * 18.34
+
+def dollar_to_mur(dollar):
+    return dollar * 45.5
+
+def dollar_to_din_tun(dollar):
+    return dollar * 3.09
+
+def space_in_numbers(x):
+    n= ""
+    
+    for i in range(1,len(x) + 1):
+        if i%3 == 0 and i != len(x):
+            n = " " + x[-i] + n
+        else :
+            n = x[-i] + n
+    
+    return n
+
+
+def courbe(base,n,p):
+    l=np.zeros((p,n))
+    for j in range (p):
+        for i in range(n):
+            #c = np.random.randint(0,2)
+            #if c == 0 : 
+                #l[j][i] = base - base*np.random.rand()
+                #base = l[j][i]
+               # print(i,j)
+           
+           # else : 
+                l[j][i] = base + 0.01*base*np.random.rand()
+                base = l[j][i]
+                #print(i,j)
+        
+    return l
+
+def rendement(a):
+    l=[]
+    for i in range(a+1):
+        if i < 8:
+            l+= [1 - i*0.018]
+        else :
+            l += [0.8 + 0.2*(1/(1+ i**0.5))]
+        
+    return l
+
+#chart_data = pd.DataFrame(courbe(1000,2,20), columns=["a","b"])
+
+
+
+
+def gen_pdf():
+    my_name = "Franck AndradeEDFDZHEVC"
+    item1 = "TV"
+    item2="Couch"
+    item3 = "Washing Machine"
+    today_date = datetime.today().strftime("%d %b, %Y")
+    
+    context = {'my_name' : my_name, 'item1': item1, 'item2': item2, 'item3': item3, 'today_date' : today_date}
+    
+    template_loader = jinja2.FileSystemLoader('/Users/nass/Documents/Streamlit-app/')
+    template_env = jinja2.Environment(loader = template_loader)
+    
+    
+    template = template_env.get_template("basic_template.html")
+    output_text = template.render(context)
+    
+    config = pdfkit.configuration(wkhtmltopdf = "/usr/local/bin/wkhtmltopdf")
+    pdf = pdfkit.from_string(output_text, 'pdf_generated.pdf', configuration = config)
 
 
 #Sidebar
