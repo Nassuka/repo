@@ -11,7 +11,7 @@ import pandas as pd
 #from datetime import datetime
 
 #Icône et nom de l'onglet
-st.set_page_config(page_title='Comparaison HFO vs GPL',page_icon='/Users/nass/Documents/Streamlit-app/Logo_TotalEnergies.png', initial_sidebar_state="expanded", layout = "wide")
+st.set_page_config(page_title='Comparaison HFO vs GPL',page_icon='Logo_TotalEnergies.png', initial_sidebar_state="expanded", layout = "wide")
 
 #Titre de l'application
 st.header('Application de comparaison des coûts de fonctionnement entre le HFO et le GPL')
@@ -114,9 +114,9 @@ with st.sidebar :
     scol1, scol2 = st.columns([1.8,3])
     
 
-    scol2 .image("/Users/nass/Documents/Streamlit-app/drap_fr.png",width = 30)
+    scol2 .image("drap_fr.png",width = 30)
     scol2.write("")
-    scol2 .image("/Users/nass/Documents/Streamlit-app/drap_en.webp",width = 30)
+    scol2 .image("drap_en.webp",width = 30)
     
 
     
