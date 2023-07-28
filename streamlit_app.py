@@ -3,7 +3,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import altair as alt
-import plotly.express as px
+#import plotly.express as px
 
 from fonctions import calcul_conso_gpl,rendement, calcul_energy_hfo, price_hfo, price_gpl, euro_to_dollar, dollar_to_CFA, dollar_to_ZAR, dollar_to_din_tun, dollar_to_mur, space_in_numbers, courbe
 from gen_pdf import gen_pdf
@@ -909,22 +909,22 @@ if fr :
                 chart_data_hfo = pd.DataFrame(data= data_chart, columns = ["Coût énergétique", "Coût maintenance du site", "Coût de l'eau","Coût ramonages", "Coût pièces", "Coût nettoyages", "Coût additifs"])
                 st.bar_chart(chart_data_hfo)
                 
-            if st.session_state.model_want or (st.session_state.hfo_model_cost_opex > (cost_en + st.session_state.cost_hfo_maint + st.session_state.sum_pcs + st.session_state.nett_cost + st.session_state.sum_add + (st.session_state.eau * st.session_state.eau_l * st.session_state.eau_nb) + (st.session_state.ram_cost * st.session_state.nb_ram))):
-                df_pie = pd.DataFrame(data = np.array([[cost_hfo, "Molécule"],[st.session_state.hfo_model_cost_opex, "OPEX"]]), index=["Coût de la molécule", "Coût des OPEX"], columns = ["Coût", "Coût associé"])
-                fig = px.pie(df_pie, values= 'Coût', names = 'Coût associé')
-                tab, pie = st.columns(2)
-                with tab:
-                    st.write(df_pie)
-                with pie:
-                    st.write(fig)
-            else :
-                df_pie = pd.DataFrame(data = np.array([[cost_hfo, "Molécule"],[cost_en, "Energie"],[(st.session_state.eau * st.session_state.eau_l * st.session_state.eau_nb),"Eau"],[st.session_state.cost_hfo_maint,"Maintenance"],[(st.session_state.ram_cost * st.session_state.nb_ram),"Ramonage"],[st.session_state.sum_pcs,"Pièces"], [st.session_state.nett_cost, "Nettoyage"], [st.session_state.sum_add,"Additif"]]), index=["Coût de la molécule", "Coût de l'énergie","Coût de l'eau", "Coût de la maintenance","Coût des ramonages","Coût des pièces","Coût du nettoyage", "Coût des additifs"], columns = ["Coût", "Coût associé"])
-                fig = px.pie(df_pie, values= 'Coût', names = 'Coût associé')
-                tab, pie = st.columns(2)
-                with tab:
-                    st.write(df_pie)
-                with pie:
-                    st.write(fig)
+            #if st.session_state.model_want or (st.session_state.hfo_model_cost_opex > (cost_en + st.session_state.cost_hfo_maint + st.session_state.sum_pcs + st.session_state.nett_cost + st.session_state.sum_add + (st.session_state.eau * st.session_state.eau_l * st.session_state.eau_nb) + (st.session_state.ram_cost * st.session_state.nb_ram))):
+                #df_pie = pd.DataFrame(data = np.array([[cost_hfo, "Molécule"],[st.session_state.hfo_model_cost_opex, "OPEX"]]), index=["Coût de la molécule", "Coût des OPEX"], columns = ["Coût", "Coût associé"])
+                #fig = px.pie(df_pie, values= 'Coût', names = 'Coût associé')
+                #tab, pie = st.columns(2)
+               # with tab:
+                    #st.write(df_pie)
+               # with pie:
+                    #st.write(fig)
+            #else :
+                #df_pie = pd.DataFrame(data = np.array([[cost_hfo, "Molécule"],[cost_en, "Energie"],[(st.session_state.eau * st.session_state.eau_l * st.session_state.eau_nb),"Eau"],[st.session_state.cost_hfo_maint,"Maintenance"],[(st.session_state.ram_cost * st.session_state.nb_ram),"Ramonage"],[st.session_state.sum_pcs,"Pièces"], [st.session_state.nett_cost, "Nettoyage"], [st.session_state.sum_add,"Additif"]]), index=["Coût de la molécule", "Coût de l'énergie","Coût de l'eau", "Coût de la maintenance","Coût des ramonages","Coût des pièces","Coût du nettoyage", "Coût des additifs"], columns = ["Coût", "Coût associé"])
+                #fig = px.pie(df_pie, values= 'Coût', names = 'Coût associé')
+                #tab, pie = st.columns(2)
+                #with tab:
+                    #st.write(df_pie)
+               # with pie:
+                    #st.write(fig)
                 #(cost_en + st.session_state.cost_hfo_maint + st.session_state.sum_pcs + st.session_state.nett_cost + st.session_state.sum_add + (st.session_state.eau * st.session_state.eau_l * st.session_state.eau_nb) + (st.session_state.ram_cost * st.session_state.nb_ram)
             
              
